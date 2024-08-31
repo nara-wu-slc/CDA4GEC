@@ -27,18 +27,18 @@ Our model is trained based on the Fairseq framework, details of the weights and 
 [link](https://huggingface.co/DecoderImmortal/CDA4GEC)
 |Name|Data Info|Download Link|
 |:--:|--|--|
-|Stage1|Pre-training on [C4 synthetic data](https://github.com/google-research-datasets/C4_200M-synthetic-dataset-for-grammatical-error-correction) with 200M scale|CDA4GEC/tree/main/stage1_checkpoint_best.pt|
-|Stage2+|Fine-tuning on the augmented Lang8, NUCLE, FCE and W&I+L datasets|CDA4GEC/tree/main/stage2_checkpoint_best.pt|
-|Stage3+|Continue fine-tuning on the augmented W&I+L dataset|CDA4GEC/tree/main/stage3_checkpoint_best.pt|
+|Stage1|Pre-training on [C4 synthetic data](https://github.com/google-research-datasets/C4_200M-synthetic-dataset-for-grammatical-error-correction) with 200M scale|[CDA4GEC](https://huggingface.co/DecoderImmortal/CDA4GEC)/tree/main/stage1_checkpoint_best.pt|
+|Stage2+|Fine-tuning on the augmented Lang8, NUCLE, FCE and W&I+L datasets|[CDA4GEC](https://huggingface.co/DecoderImmortal/CDA4GEC)/tree/main/stage2_checkpoint_best.pt|
+|Stage3+|Continue fine-tuning on the augmented W&I+L dataset|[CDA4GEC](https://huggingface.co/DecoderImmortal/CDA4GEC)/tree/main/stage3_checkpoint_best.pt|
 
 # Synthetic Data
 > We only release the synthetic pseudo-data, please follow the official process to apply for the original annotated data.
 
-[link](https://huggingface.co/DecoderImmortal/CDA4GEC)
+
 |DataInfo|Amount|Source|Path|
 |:--:|:--:|:--:|:--:|
-|stage2+|2M|Lang-8 & NUCLE & FCE & W&I+L|[./data/pseudo/stage2](CDA4GEC/tree/main/pseudo/stage2)|
-|stage3+|200K|W&I+L|[./data/pseudo/stage3](CDA4GEC/tree/main/pseudo/stage3)|
+|stage2+|2M|Lang-8 & NUCLE & FCE & W&I+L|[CDA4GEC](https://huggingface.co/DecoderImmortal/CDA4GEC)/tree/main/pseudo/stage2|
+|stage3+|200K|W&I+L|[CDA4GEC](https://huggingface.co/DecoderImmortal/CDA4GEC)/tree/main/pseudo/stage3|
 
 # Details
 ## Training Baseline Model
