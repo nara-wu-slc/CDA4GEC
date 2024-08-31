@@ -27,7 +27,7 @@ Our model is trained based on the Fairseq framework, details of the weights and 
 |Name|Data Info|Download Link|
 |:--:|--|--|
 |Stage1|Pre-training on [C4 synthetic data](https://github.com/google-research-datasets/C4_200M-synthetic-dataset-for-grammatical-error-correction) with 200M scale|TODO|
-<!-- |Stage2+|Fine-tuning on the augmented Lang8, NUCLE, FCE and W&I+L datasets|TODO| -->
+|Stage2+|Fine-tuning on the augmented Lang8, NUCLE, FCE and W&I+L datasets|TODO|
 |Stage3+|Continue fine-tuning on the augmented W&I+L dataset|TODO|
 
 # Synthetic Data
