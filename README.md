@@ -24,7 +24,6 @@ Our model is trained based on the Fairseq framework, details of the weights and 
     <image src='./pic/flow.png' width="40%">
 </div>
 
-[link](https://huggingface.co/DecoderImmortal/CDA4GEC)
 |Name|Data Info|Download Link|
 |:--:|--|--|
 |Stage1|Pre-training on [C4 synthetic data](https://github.com/google-research-datasets/C4_200M-synthetic-dataset-for-grammatical-error-correction) with 200M scale|[CDA4GEC](https://huggingface.co/DecoderImmortal/CDA4GEC)/tree/main/stage1_checkpoint_best.pt|
