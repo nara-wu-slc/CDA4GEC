@@ -11,7 +11,8 @@ Implementation of ACL 2024 findings ["Improving Grammatical Error Correction via
 pip install numpy==1.26.4 numba==0.60.0
 pip install torch==2.4.0 torchvision==0.19.0 --index-url https://download.pytorch.org/whl/cu124
 pip install vllm==0.6.3
-pip install spacy errant
+pip install spacy==3.7.5
+pip install errant
 ```
 
 - Install fairseq from the local directory
