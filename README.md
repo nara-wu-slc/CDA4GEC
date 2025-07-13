@@ -4,17 +4,18 @@ Implementation of ACL 2024 findings ["Improving Grammatical Error Correction via
     <image src='./pic/main.png' width="60%">
 </div>
 
-# Requirements
-The part of the model is implemented using the fairseq framework and the required environment is as follows:
-- python >= 3.8
-- pytorch >= 1.10.0
-- spacy
-- errant
-- vllm
-- fairseq
+# Install & Run
+```
+pip install spacy errant vllm
+```
+
 ```
 cd fairseq
 pip install --editable ./
+```
+
+```
+git clone https://huggingface.co/DecoderImmortal/CDA4GEC
 ```
 
 # Model Weights
