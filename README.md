@@ -10,9 +10,7 @@ pip install spacy errant vllm
 ```
 
 ```
-cd fairseq
-pip install --editable ./
-cd ..
+cd fairseq ; pip install --editable ./ ; cd ..
 ```
 
 ```
