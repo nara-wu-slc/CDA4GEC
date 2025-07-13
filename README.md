@@ -19,6 +19,12 @@ cd ..
 git clone https://huggingface.co/DecoderImmortal/CDA4GEC
 ```
 
+```
+wget https://www.comp.nus.edu.sg/~nlp/conll14st/conll14st-test-data.tar.gz
+tar zxf conll14st-test-data.tar.gz
+```
+
+
 # Model Weights
 We release the model weights of each training stage.
 Our model is trained based on the Fairseq framework, details of the weights and links to them are below.
