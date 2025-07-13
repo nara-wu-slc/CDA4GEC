@@ -6,11 +6,18 @@ Implementation of ACL 2024 findings ["Improving Grammatical Error Correction via
 
 # Install & Run
 ```
-pip install spacy errant vllm
+pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+pip install vllm==0.7.3
+pip install spacy errant
 ```
 
 ```
 cd fairseq ; pip install --editable ./ ; cd ..
+```
+
+```
+ln -s dict.txt pt_model/gpt2bpe/dict.src.txt
+ln -s dict.txt pt_model/gpt2bpe/dict.tgt.txt
 ```
 
 ```
@@ -22,6 +29,36 @@ wget https://www.comp.nus.edu.sg/~nlp/conll14st/conll14st-test-data.tar.gz
 tar zxf conll14st-test-data.tar.gz
 ```
 
+```
+grep '^S ' conll14st-test-data/noalt/official-2014.0.m2 | cut -d " " -f 2- > conll14.src
+```
+
+```
+fairseq-interactive ./pt_model/gpt2bpe \
+  --path CDA4GEC/stage3_checkpoint_best.pt \
+  --task translation_for_gec \
+  --bpe 'gpt2' \
+  --gpt2-encoder-json ./pt_model/gpt2bpe/encoder.json \
+  --gpt2-vocab-bpe ./pt_model/gpt2bpe/vocab.bpe \
+  --nbest 1 \
+  --beam 12 \
+  --sacrebleu \
+  --batch-size 32 \
+  --buffer-size 64 \
+  --input conll14.src \
+  --source-lang src \
+  --target-lang tgt \
+  > generator.log
+```
+
+```
+cat generator.log | grep "^D-" | python -c "import sys; x = sys.stdin.readlines(); x = [ x[i] for i in range(len(x)) if (i % 1 == 0) ]; x = sorted(x, key=lambda x:int(x.split('\t')[0][2:])) ; x = ''.join(x) ; print(x)" | cut -f 3 > system.out
+cat generator.log | grep "^S-" | python -c "import sys; x = sys.stdin.readlines(); x = [ x[i] for i in range(len(x)) if (i % 1 == 0) ]; x = sorted(x, key=lambda x:int(x.split('\t')[0][2:])) ; x = ''.join(x) ; print(x)" | cut -f 2 > system.in
+```
+
+```
+python3 src/test_m2.py
+```
 
 # Model Weights
 We release the model weights of each training stage.
