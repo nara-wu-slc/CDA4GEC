@@ -9,7 +9,7 @@ Implementation of ACL 2024 findings ["Improving Grammatical Error Correction via
 - Install required libraries
 ```
 pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu124
-pip install vllm==0.6.6post1
+pip install vllm==0.6.5
 pip install spacy errant
 ```
 
