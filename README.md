@@ -61,7 +61,7 @@ fairseq-interactive ./pt_model/gpt2bpe \
   > generator.log
 ```
 
-- Extract GEC input and outputs
+- Extract GEC inputs and outputs
 ```
 cat generator.log | grep "^D-" | python -c "import sys; x = sys.stdin.readlines(); x = [ x[i] for i in range(len(x)) if (i % 1 == 0) ]; x = sorted(x, key=lambda x:int(x.split('\t')[0][2:])) ; x = ''.join(x) ; print(x)" | cut -f 3 > system.out
 cat generator.log | grep "^S-" | python -c "import sys; x = sys.stdin.readlines(); x = [ x[i] for i in range(len(x)) if (i % 1 == 0) ]; x = sorted(x, key=lambda x:int(x.split('\t')[0][2:])) ; x = ''.join(x) ; print(x)" | cut -f 2 > system.in
