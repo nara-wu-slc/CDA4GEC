@@ -5,34 +5,42 @@ Implementation of ACL 2024 findings ["Improving Grammatical Error Correction via
 </div>
 
 # Install & Run
+
+- Install required libraries
 ```
 pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
 pip install vllm==0.7.3
 pip install spacy errant
 ```
 
+- Install fairseq from the local directory
 ```
 cd fairseq ; pip install --editable ./ ; cd ..
 ```
 
+- Symlink dictionary
 ```
 ln -s dict.txt pt_model/gpt2bpe/dict.src.txt
 ln -s dict.txt pt_model/gpt2bpe/dict.tgt.txt
 ```
 
+- Download pre-trained models
 ```
 git clone https://huggingface.co/DecoderImmortal/CDA4GEC
 ```
 
+- Download CoNLL 2014 test set
 ```
 wget https://www.comp.nus.edu.sg/~nlp/conll14st/conll14st-test-data.tar.gz
 tar zxf conll14st-test-data.tar.gz
 ```
 
+- Extract test sentences
 ```
 grep '^S ' conll14st-test-data/noalt/official-2014.0.m2 | cut -d " " -f 2- > conll14.src
 ```
 
+- Run GEC using a pre-trained model
 ```
 fairseq-interactive ./pt_model/gpt2bpe \
   --path CDA4GEC/stage3_checkpoint_best.pt \
@@ -51,11 +59,13 @@ fairseq-interactive ./pt_model/gpt2bpe \
   > generator.log
 ```
 
+- Extract GEC input and outputs
 ```
 cat generator.log | grep "^D-" | python -c "import sys; x = sys.stdin.readlines(); x = [ x[i] for i in range(len(x)) if (i % 1 == 0) ]; x = sorted(x, key=lambda x:int(x.split('\t')[0][2:])) ; x = ''.join(x) ; print(x)" | cut -f 3 > system.out
 cat generator.log | grep "^S-" | python -c "import sys; x = sys.stdin.readlines(); x = [ x[i] for i in range(len(x)) if (i % 1 == 0) ]; x = sorted(x, key=lambda x:int(x.split('\t')[0][2:])) ; x = ''.join(x) ; print(x)" | cut -f 2 > system.in
 ```
 
+- Run evaluation script
 ```
 python3 src/test_m2.py
 ```
